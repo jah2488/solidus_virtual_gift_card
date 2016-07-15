@@ -1,6 +1,6 @@
 module Spree::RedemptionCodeGenerator
   def self.generate_redemption_code
-    chars = [('A'..'Z'), ('0'..'9')].map(&:to_a).flatten
+    chars = [('A'..'Z'), ('1'..'9')].flat_map(&:to_a).reject { |c| c == 'O' }
     16.times.map { chars[rand(chars.count)] }.join
   end
 
